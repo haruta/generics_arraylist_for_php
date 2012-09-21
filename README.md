@@ -5,7 +5,16 @@ Generics ArrayList For PHP
 
 JavaのGenericsを真似てPHPで作成
 
-Type Hinting を利用したかったのでそれぞれの型のArrayListはAbstractGenericsArrayListを継承するようにした。
+```php
+publc function hoge(IntArrayList $list) {
+...
+}
+
+public function bar(DateTimeArrayList $list) {
+...
+}
+```
+↑のような感じでType Hinting を利用したかったのでそれぞれの型のArrayListはAbstractGenericsArrayListを継承するようにした。
 
 指定以外の型が渡された時は InvalidArgumentTypeException がスローされる。
 
