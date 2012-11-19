@@ -30,6 +30,16 @@ class AbstractGenericsArrayListTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, $obj->offsetGet(0)->count());
         $this->assertEquals(2, $obj->offsetGet(1)->count());
     }
+
+    public function test_emptyArrayList()
+    {
+        $obj = new EmptyArrayListForTest();
+        $this->assertEquals(0, $obj->count());
+
+        $iterator = $obj->getIterator();
+        $this->assertInstanceOf('\ArrayIterator', $iterator);
+        $this->assertEquals(0, $iterator->count());
+    }
 }
 
 class DateTimeArrayListForTest
@@ -50,6 +60,12 @@ class CountableImplArrayListForTest
     protected function getTarget() { return 'Countable'; }
 }
 
+class EmptyArrayListForTest
+    extends \GenericsArrayList\AbstractGenericsArrayList
+{
+    protected function getTarget() { return 'ClassForEmptyTest'; }
+}
+
 class DateTime
 {
 }
@@ -62,4 +78,8 @@ class CountableImpl1ForTest implements \Countable
 class CountableImpl2ForTest implements \Countable
 {
     public function count() { return 2; }
+}
+
+class ClassForEmptyTest
+{
 }
