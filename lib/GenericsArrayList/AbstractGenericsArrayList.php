@@ -8,7 +8,7 @@ abstract class AbstractGenericsArrayList
     implements \ArrayAccess, \IteratorAggregate, \Countable
 {
     private $target = null;
-    protected $data;
+    protected $data = array();
     protected $assert_function = null;
 
     public function __construct()
